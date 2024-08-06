@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Box, Typography, Card, CardContent, CardMedia, Rating, IconButton } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Box, Typography, Card, CardContent, CardMedia, Rating, IconButton, CircularProgress, Chip } from '@mui/material';
 import { styled } from '@mui/system';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -14,18 +14,14 @@ const StyledCard = styled(Card)({
   margin: '0 auto', // Center the card
 });
 
-const CardTitle = styled(Typography)({
-  fontSize: '22px',
-  color: 'var(--M3-sys-light-on-surface, #1B1C18)',
-  textAlign: 'left',
-  lineHeight: 1,
-});
-
-const CardText = styled(Typography)({
-  fontSize: '14px',
-  color: 'var(--M3-sys-light-on-background, #1B1C18)',
-  letterSpacing: '0.25px',
-  lineHeight: '20px',
+const CardTitleOverlay = styled(Box)({
+  position: 'absolute',
+  bottom: '0',
+  left: '0',
+  right: '0',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  color: 'white',
+  padding: '10px 20px',
   textAlign: 'left',
 });
 
@@ -33,38 +29,43 @@ const RatingContainer = styled(Box)({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  marginTop: '33px',
-});
-
-const ElevateEarnings = styled(Box)({
-  borderRadius: '0px 0px 4px 4px',
-  backgroundColor: 'rgba(240, 240, 240, 1)',
-  color: 'var(--Text-Color-3, #FFF)',
-  textAlign: 'center',
-  margin: '53px 0 -19px',
-  padding: '35px 70px 14px',
-  fontFamily: 'Averta, sans-serif',
-  fontWeight: 300,
-  fontSize: '24px',
-  '@media (max-width: 991px)': {
-    margin: '40px 0 10px',
-    padding: '0 20px',
-  },
+  marginTop: '20px',
+  backgroundColor: '#F5F5F5', // Very light grey background
+  padding: '10px', // Add some padding for better spacing
+  borderRadius: '8px', // Optional: Add border radius for rounded corners
 });
 
 const NavigationContainer = styled(Box)({
   position: 'absolute',
-  top: '10px',
+  top: '0',
   left: '0',
   right: '0',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: '0 10px',
+  padding: '10px 20px',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+});
+
+const StyledIconButton = styled(IconButton)({
+  color: 'white',
+  backgroundColor: 'rgba(0, 0, 0, 0.3)',
+  '&:hover': {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+});
+
+const NavText = styled(Typography)({
+  color: 'rgba(255, 255, 255, 0.8)', // Slightly whiter font color
 });
 
 function MovieCard({ list }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+  }, [currentIndex]);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % list.length);
@@ -79,42 +80,70 @@ function MovieCard({ list }) {
   return (
     <StyledCard>
       <Box sx={{ position: 'relative' }}>
+        {loading && (
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              zIndex: 1,
+            }}
+          >
+            <CircularProgress color="inherit" />
+          </Box>
+        )}
         <CardMedia
           component="img"
-          height="140"
-          image={currentMovie.title.primaryImage.imageUrl}
+          height="350"
+          image={currentMovie?.title?.primaryImage.imageUrl}
           alt="Movie poster"
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
+          onLoad={() => setLoading(false)}
         />
         <NavigationContainer>
-          <IconButton onClick={handlePrev}>
+          <StyledIconButton onClick={handlePrev}>
             <ArrowBackIosNewIcon />
-          </IconButton>
-          <Typography variant="body1" sx={{ color: 'white' }}>
+          </StyledIconButton>
+          <NavText variant="body1">
             {`Movie ${currentIndex + 1} of ${list.length}`}
-          </Typography>
-          <IconButton onClick={handleNext}>
+          </NavText>
+          <StyledIconButton onClick={handleNext}>
             <ArrowForwardIosIcon />
-          </IconButton>
+          </StyledIconButton>
         </NavigationContainer>
+        <CardTitleOverlay>
+          <Typography variant="h5" component="div" sx={{ color: 'white' }}>
+            {currentMovie?.title?.originalTitleText.text}
+          </Typography>
+        </CardTitleOverlay>
       </Box>
       <CardContent>
-        <CardTitle gutterBottom variant="h5" component="div">
-          {currentMovie.title.originalTitleText.text}
-        </CardTitle>
-        <CardText variant="body2" color="text.secondary">
-          <Box fontWeight="fontWeightMedium" display="inline">
-            Current Rating:
-          </Box>
-          <br />
-          {currentMovie.title.ratingsSummary.aggregateRating}
-        </CardText>
-        <CardText variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-          <Box fontWeight="fontWeightMedium" display="inline">
-            Lifestyle Possible:
-          </Box>
-          <br />
-          Enjoy a comfortable life with some indulgences and financial security.
-        </CardText>
+        <Box display="flex" flexWrap="wrap" gap={1}>
+          <Chip
+            label={`Rating: ${currentMovie?.title?.ratingsSummary.aggregateRating}`}
+            sx={{ backgroundColor: '#4B0082', color: 'white' }} // Indigo background for rating
+          />
+          <Chip
+            label={`Release Year: ${currentMovie?.title?.releaseYear.year}`}
+            sx={{ backgroundColor: '#2E8B57', color: 'white' }} // Sea green background for release year
+          />
+          <Chip
+            label={`Vote Count: ${currentMovie?.title?.ratingsSummary.voteCount}`}
+            sx={{ backgroundColor: '#8B0000', color: 'white' }} // Dark red background for vote count
+          />
+          {currentMovie?.title?.ratingsSummary.topRanking && (
+            <Chip
+              label={`Top Ranking: ${currentMovie?.title?.ratingsSummary.topRanking.rank}`}
+              sx={{ backgroundColor: '#483D8B', color: 'white' }} // Dark slate blue background for top ranking
+            />
+          )}
+        </Box>
       </CardContent>
       <RatingContainer>
         <Typography variant="body2" color="text.primary" gutterBottom>
@@ -122,7 +151,6 @@ function MovieCard({ list }) {
         </Typography>
         <Rating name="movie-rating" defaultValue={2.5} precision={0.5} />
       </RatingContainer>
-      <ElevateEarnings>Elevate Your Earnings</ElevateEarnings>
     </StyledCard>
   );
 }
