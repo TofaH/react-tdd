@@ -1,0 +1,9 @@
+{
+  "typeAcquisition": {
+    "include": ["vitest/globals"]
+  },
+  "compilerOptions": {
+    "jsx": "preserve"
+  },
+  "include": ["src/**/*", "test/**/*"]
+}

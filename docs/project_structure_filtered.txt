@@ -1,0 +1,183 @@
+--- Folder Structure ---
+.eslintrc.cjs
+[.git]
+    ├── COMMIT_EDITMSG
+    ├── FETCH_HEAD
+    ├── HEAD
+    ├── ORIG_HEAD
+    ├── config
+    ├── description
+    ├── [hooks]
+        ├── applypatch-msg.sample
+        ├── commit-msg.sample
+        ├── fsmonitor-watchman.sample
+        ├── post-update.sample
+        ├── pre-applypatch.sample
+        ├── pre-commit.sample
+        ├── pre-merge-commit.sample
+        ├── pre-push.sample
+        ├── pre-rebase.sample
+        ├── pre-receive.sample
+        ├── prepare-commit-msg.sample
+        ├── push-to-checkout.sample
+        └── update.sample
+    ├── index
+    ├── [info]
+        └── exclude
+    ├── [objects]
+        ├── [01]
+            └── c03799d493dabb35245421e564d43ff573df1e
+        ├── [07]
+            └── cc3229b822c4a797a4846baa932fc20d4ee243
+        ├── [08]
+            └── 440343f9102e6dd80dd6bca2a9c3c0a366a409
+        ├── [0c]
+            └── 589eccd4d48e270e161a1ab91baee5e5f4b4bc
+        ├── [0e]
+            └── 2694222f20b4d4724c269edb63e7a0792efd56
+        ├── [2b]
+            └── 14120add7e12a1a449d70c0c5011528b72d2dd
+        ├── [2d]
+            └── be93f8e0e42efeb5e8b0521615fa4ff7e0b8ef
+        ├── [3a]
+            └── 6314c9eaee38d4fa745400e3bc201c70c03e00
+        ├── [3b]
+            └── c6fa5e7834a7c931fac0e33d4ce4515a5aa66c
+        ├── [4e]
+            └── 26ab0871ac1fc2db59cd557b7eea2ed9bbd72f
+        ├── [53]
+            └── f3f81f4475f1bc1a0db5343ed8fff85177c9ca
+        ├── [55]
+            └── 7b37c44d5cb352ff331f90e7fba0189cdfa65e
+        ├── [58]
+            └── f638c0e6ca6045be2f81fcf245aa729735c224
+        ├── [5d]
+            └── f3846a8e39b004c70ddd6f1c83d7bac8a7f740
+        ├── [5f]
+            └── c22ae4a0f3c747918f705bbbb2db83c3fc963f
+        ├── [61]
+            ├── 14e6bc3629aa85d192a2dd46d19d57a78c0fa2
+            └── 19ad9a8faaa5073a454f67b50fb98a25972fd2
+        ├── [64]
+            └── 0d76ca2de35685481aca9dbf6b12fe44f8be78
+        ├── [68]
+            └── e960defd34f83f1ce6388b04ac02d733486727
+        ├── [6b]
+            └── 9de6dd6e7eb0a48eff66234ec6b790090abc1e
+        ├── [6c]
+            └── 87de9bb3358469122cc991d5cf578927246184
+        ├── [7a]
+            └── d2c1349c8a2b4baf3ec226b1b3a2380901a11d
+        ├── [83]
+            └── 6af9f062cae109ebbc252b4c972ff38eaabd1b
+        ├── [85]
+            └── fc8631fdb994d1d24513f30416b85467655426
+        ├── [86]
+            └── 1b04b35601de92787a1a0db6c9fa190975d220
+        ├── [87]
+            └── 15ba25c8e7c6cad249faa323c8521bba7c32f8
+        ├── [8c]
+            └── e77a1bfd2d0e3af8df72470afb9e210afab189
+        ├── [90]
+            └── 304f1340a46d37ca7eea08698c4cde2d73591c
+        ├── [93]
+            └── 362bd4a7019151e28c0ffa89c44e1b58c433d7
+        ├── [9b]
+            └── ea781c8a998791dfc6e91556ba8122f86acc8d
+        ├── [9e]
+            └── 8ec4a55b76368d0a7b2da2b146cd387d5fdfe6
+        ├── [a2]
+            └── 44ca7ad3756b35402398e9106d94e756042582
+        ├── [a5]
+            └── 47bf36d8d11a4f89c59c144f24795749086dd1
+        ├── [aa]
+            └── f37d8befbcd7fe860f5884d5b60d2acc56e1a7
+        ├── [ad]
+            └── 9bdb524eace64bb8c01ec81d97fbc266c5006a
+        ├── [b3]
+            └── 214ad441af599b57413b0315e059899124aea0
+        ├── [b9]
+            └── d355df2a5956b526c004531b7b0ffe412461e0
+        ├── [bb]
+            ├── 08236cd3e2e180f945a90460ff1379f6cd5629
+            └── 2b56d6c0f633d625a048ec7ee5277ec64cc1de
+        ├── [bd]
+            └── eb3fd9c7c0f64c97ce1f0dfb9c6b73731e7748
+        ├── [be]
+            └── 7ab7751d7bdb106b12d6da9cc1f1f80b23f816
+        ├── [bf]
+            └── 182a172635fd91af544c32e9d15e827533c25b
+        ├── [cd]
+            └── 4a31d3719931f592459e4bf5718ac9a735e06c
+        ├── [cf]
+            └── 13f8e3a9504acb4fccc47079b8a981a7603f1d
+        ├── [d0]
+            └── b24780d688b52e289e6180c2fbd4db3a86ebaa
+        ├── [df]
+            ├── 8ecea689ccf5fea28b1d2a73ef44c7ad581843
+            └── d954c0045de71ebe3fa4b896a0c3a2f0a45cc3
+        ├── [e6]
+            └── 9057e8a0875192d70c42f7dc2668fc35b66388
+        ├── [e7]
+            └── b8dfb1b2a60bd50538bec9f876511b9cac21e3
+        ├── [ec]
+            └── 66e0dba89c5ed1a8de224dfc0db393dbe2c313
+        ├── [f1]
+            └── c59a39624717725bc651e7696ae2a2d2cdc448
+        ├── [f7]
+            └── 68e33fc946e6074d6bd3ce5d454853adb3615e
+        ├── [f9]
+            └── 2e90d261457d550545e767f2e5af93c4d66322
+        ├── [info]
+        └── [pack]
+    └── [refs]
+        ├── [heads]
+            └── main
+        ├── [remotes]
+            └── [origin]
+                └── main
+        └── [tags]
+.gitignore
+README.md
+[docs]
+    ├── .project_structure_filter
+    ├── .project_structure_ignore
+    ├── best_practices.md
+    ├── project_structure.txt
+    └── project_structure_filtered.txt
+index.html
+jsconfig.json
+package.json
+[public]
+    └── vite.svg
+[src]
+    ├── App.css
+    ├── App.jsx
+    ├── [assets]
+        ├── Career-Coach (4).png
+        ├── react.svg
+        └── vcc_logo.png
+    ├── [components]
+        ├── DynamicForm.jsx
+        └── InputBuilder.jsx
+    ├── [config]
+        └── [registration]
+            ├── formConfig.js
+            └── validationSchema.js
+    ├── index.css
+    ├── main.jsx
+    ├── [test]
+        ├── Test Cases.txt
+        └── [mock]
+            ├── handlers.js
+            └── server.js
+    └── [views]
+        └── [Registration]
+            ├── Registration.jsx
+            └── Registration.test.jsx
+vite.config.js
+vitest.config.js
+vitest.setup.js
+yarn.lock
+
+--- File Contents ---
