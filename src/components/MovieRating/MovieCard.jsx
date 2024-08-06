@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Typography, Card, CardContent, CardMedia, Rating, IconButton } from '@mui/material';
 import { styled } from '@mui/system';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -63,33 +63,50 @@ const NavigationContainer = styled(Box)({
   padding: '0 10px',
 });
 
-function MovieCard() {
+function MovieCard({ list }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % list.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + list.length) % list.length);
+  };
+
+  const currentMovie = list[currentIndex];
+
   return (
     <StyledCard>
       <Box sx={{ position: 'relative' }}>
-        <CardMedia component="img" height="140" image="https://cdn.builder.io/api/v1/image/assets/TEMP/a2e04ee335fceec5fef82bb98e7628a7a0512e87cfc80aa7377b29384c2c9905?apiKey=42132d5119ec452a91b400671c3a91a2&&apiKey=42132d5119ec452a91b400671c3a91a2" alt="Movie poster" />
+        <CardMedia
+          component="img"
+          height="140"
+          image={currentMovie.title.primaryImage.imageUrl}
+          alt="Movie poster"
+        />
         <NavigationContainer>
-          <IconButton>
+          <IconButton onClick={handlePrev}>
             <ArrowBackIosNewIcon />
           </IconButton>
           <Typography variant="body1" sx={{ color: 'white' }}>
-            Movie 1 of 18
+            {`Movie ${currentIndex + 1} of ${list.length}`}
           </Typography>
-          <IconButton>
+          <IconButton onClick={handleNext}>
             <ArrowForwardIosIcon />
           </IconButton>
         </NavigationContainer>
       </Box>
       <CardContent>
         <CardTitle gutterBottom variant="h5" component="div">
-          Computer Science
+          {currentMovie.title.originalTitleText.text}
         </CardTitle>
         <CardText variant="body2" color="text.secondary">
           <Box fontWeight="fontWeightMedium" display="inline">
-            What You Will Do:
+            Current Rating:
           </Box>
           <br />
-          Innovate and optimize digital solutions, employing technical expertise to drive technological advancements.
+          {currentMovie.title.ratingsSummary.aggregateRating}
         </CardText>
         <CardText variant="body2" color="text.secondary" sx={{ mt: 2 }}>
           <Box fontWeight="fontWeightMedium" display="inline">

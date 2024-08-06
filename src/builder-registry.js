@@ -1,7 +1,6 @@
 import { Builder } from "@builder.io/react";
-import App from "./App";
-import Registration from "./components/Registration";
-import MovieRating from "./components/MovieRating/MovieRating";
+import MovieRating from "./views/MovieRating/MovieRating";
+import Registration from "./views/Registration/Registration";
 
 Builder.registerComponent(Registration, {
   name: "Registration",

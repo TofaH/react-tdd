@@ -2,7 +2,6 @@ import { Card, CardContent, Typography } from '@mui/material';
 import DynamicForm from '../../components/DynamicForm';
 import { fields } from '../../config/registration/formConfig';
 import schema from '../../config/registration/validationSchema';
-import '../../index.css';
 
 /**
  * Registration Component
