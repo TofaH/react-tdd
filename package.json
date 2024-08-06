@@ -1,8 +1,13 @@
 {
   "name": "react-tdd",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
+  "description": "generative AI experiments",
+  "main": "index.html",
+  "repository": "git@github.com:TofaH/react-tdd.git",
+  "author": "Tofa Hassan <hasan.tofa@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,16 +19,21 @@
   },
   "dependencies": {
     "@apollo/client": "^3.10.8",
+    "@builder.io/dev-tools": "^1.0.19",
+    "@builder.io/react": "^4.0.1",
+    "@builder.io/sdk": "^2.2.6",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@fontsource/roboto": "^5.0.13",
     "@hookform/resolvers": "^3.9.0",
     "@mui/icons-material": "^5.16.1",
     "@mui/material": "^5.16.1",
+    "axios": "^1.7.3",
     "graphql": "^16.9.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.1",
+    "react-router-dom": "^6.26.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
