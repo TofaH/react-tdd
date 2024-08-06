@@ -1,7 +1,7 @@
 // This example is in src/App.jsx
 import { Routes, Route, Link } from 'react-router-dom';
 import BuilderPage from './builder-page';
-import Registration from './components/Registration';
+import Registration from './views/Registration/Registration';
 import MovieRating from './components/MovieRating/MovieRating';
 // ...
 
