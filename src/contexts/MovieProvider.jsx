@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import MovieContext from './MovieContext';
 import axiosInstance from '../api/axios-instance';
 
 const MovieProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
+  const [ratings, setRatings] = useState({});
 
   useEffect(() => {
     const storedMovies = localStorage.getItem('movies');
+    const storedRatings = localStorage.getItem('ratings');
     if (storedMovies) {
       setMovies(JSON.parse(storedMovies));
     } else {
@@ -41,10 +43,22 @@ const MovieProvider = ({ children }) => {
 
       fetchMovies();
     }
+
+    if (storedRatings) {
+      setRatings(JSON.parse(storedRatings));
+    }
   }, []);
 
+  const updateRating = (movieId, rating) => {
+    setRatings((prevRatings) => {
+      const newRatings = { ...prevRatings, [movieId]: rating };
+      localStorage.setItem('ratings', JSON.stringify(newRatings));
+      return newRatings;
+    });
+  };
+
   return (
-    <MovieContext.Provider value={{ movies }}>
+    <MovieContext.Provider value={{ movies, ratings, updateRating }}>
       {children}
     </MovieContext.Provider>
   );

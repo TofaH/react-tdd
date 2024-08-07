@@ -12,8 +12,7 @@ function MovieRating() {
     <>
       <Header />
       <Container maxWidth="lg" sx={{ mt: 5, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <MovieCard list={movies}/>
-        {movies?.map((movie) => (console.log(movie)))}
+        <MovieCard list={movies} />
       </Container>
       <Footer />
     </>
